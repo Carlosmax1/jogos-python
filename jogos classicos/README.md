@@ -8,4 +8,7 @@
 - [ ] Criando colisão dos Fantamas
 - [ ] Adicionado vidas ao Pacman
 - [ ] Criando um fim de jogo
+
+
+
 ![](pacman.png)
