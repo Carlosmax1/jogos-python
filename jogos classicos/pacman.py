@@ -9,11 +9,11 @@ azul = (0,0,255)
 preto = (0,0,0)
 velocidade = 1
 
-class Cenario:
+class Cenario: # Cria o cenário
 
-            def __init__(self, tamanho):
+            def __init__(self, tamanho): # 
                         self.tamanho = tamanho
-                        self.matriz = [
+                        self.matriz = [ # Matriz responsavel pela criação do cenário
                         [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
                         [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
                         [2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2],
@@ -46,19 +46,21 @@ class Cenario:
                         ]
             def pintar_linha(self,tela, numero_linha, linha):
                         
-                        for numero_coluna, coluna in enumerate(linha):
-                                    x = numero_coluna * self.tamanho
-                                    y = numero_linha * self.tamanho
+                        for numero_coluna, coluna in enumerate(linha): # Pinta cada linha e coluna
+                                    x = numero_coluna * self.tamanho   # De acordo com o calculo numero_linha * tamanho do cenario
+                                    y = numero_linha * self.tamanho 
+                                    half = self.tamanho // 2
                                     cor = preto
                                     if(coluna == 2):
                                                 cor = azul
-                                    pygame.draw.rect(tela, cor,(x, y, self.tamanho, self.tamanho), 0)
-
+                                    pygame.draw.rect(tela, cor,(x, y, self.tamanho, self.tamanho), 0) # Desenha os retângulos
+                                    if(coluna == 1):
+                                                pygame.draw.circle(tela, amarelo,(x + half, y + half),self.tamanho // 10, 0)
 
             def pintar(self, tela):
                         
                         for numero_linha, linha in enumerate(self.matriz):
-                                     self.pintar_linha(tela, numero_linha ,linha)
+                                     self.pintar_linha(tela, numero_linha ,linha) # pega cada coluna e linha
 
 
 class Pacman:
