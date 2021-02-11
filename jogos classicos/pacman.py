@@ -4,6 +4,8 @@ pygame.init()
 
 screen = pygame.display.set_mode((800,600), 0) # Tamanho da tela
 
+fonte = pygame.font.SysFont("Arial", 24, True, False)
+
 amarelo = (255,255,0) # Amarelo em RGB
 azul = (0,0,255) # Azul em RGB
 preto = (0,0,0) # Preto em RGB
@@ -47,7 +49,12 @@ class Cenario: # Cria o cenário
                                     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
                         ]
 
-                        
+            def pintar_pontos(self, tela):
+
+                        pontos_x = 30 * self.tamanho
+                        img_pontos = fonte.render(f'Score: {self.pontos}', True, (amarelo))
+                        tela.blit(img_pontos, (pontos_x, 50))
+
             def pintar_linha(self,tela, numero_linha, linha):
                         
                         for numero_coluna, coluna in enumerate(linha): # Pinta cada linha e coluna
@@ -65,7 +72,9 @@ class Cenario: # Cria o cenário
                         
                         for numero_linha, linha in enumerate(self.matriz):
                                      self.pintar_linha(tela, numero_linha ,linha) # pega cada coluna e linha
-            
+
+                        self.pintar_pontos(tela)
+
             def calcular_regras(self):
                         
                         col = self.pacman.coluna_intencao
@@ -97,7 +106,7 @@ class Pacman:
             def calcular_regras(self): # Define a velocidade o Pacman
                        
                         self.coluna_intencao = self.coluna + self.velocidade_x
-                        self.linha_intecao = self.linha + self.velocidade_y
+                        self.linha_intecao = self.linha +   self.velocidade_y
                         self.centro_x = int(self.coluna * self.tamanho + self.raio)
                         self.centro_y = int(self.linha * self.tamanho + self.raio)
 
