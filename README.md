@@ -1,2 +1,1 @@
-# jogos-python
-meus jogos python
+# Meus jogos Python
