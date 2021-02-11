@@ -1,4 +1,3 @@
-# jogos-python
 
 # Pacman
-![](imagens/pacman.png)
+![](pacman.png)
